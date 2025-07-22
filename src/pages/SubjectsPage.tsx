@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Atom, Users } from 'lucide-react';
+import { ArrowLeft, Atom, Users, BookOpen } from 'lucide-react';
 import SubjectSectionCard from '@/components/SubjectSectionCard';
 
 const SubjectsPage = () => {
@@ -25,6 +25,15 @@ const SubjectsPage = () => {
       totalChapters: 38,
       estimatedTime: '142 hours',
       route: `/grade/${grade}/social-science`
+    },
+    {
+      title: 'Common Courses',
+      description: 'Essential subjects including languages, arts, and life skills',
+      icon: BookOpen,
+      subjectCount: 6,
+      totalChapters: 38,
+      estimatedTime: '163 hours',
+      route: `/grade/${grade}/common-courses`
     }
   ];
 
@@ -55,7 +64,7 @@ const SubjectsPage = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {sections.map((section) => (
             <SubjectSectionCard
               key={section.title}

@@ -2,52 +2,69 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, BookOpen, Clock, Target, Globe, Book, Users, Languages } from 'lucide-react';
+import { ArrowLeft, BookOpen, Clock, Target, Languages, Book, Palette, Music, Heart, Briefcase } from 'lucide-react';
 
-const SocialSciencePage = () => {
+const CommonCoursesPage = () => {
   const navigate = useNavigate();
   const { grade } = useParams();
 
   const subjectIcons = {
-    'Geography': Globe,
-    'History': Book,
-    'Civic Education': Users,
-    'Social Science': Users,
     'English': Languages,
+    'Amharic': Book,
+    'Art': Palette,
+    'Music': Music,
+    'Physical Education': Heart,
+    'Economics': Briefcase,
   };
 
   const subjects = [
     {
-      name: 'Geography',
-      description: 'Earth science, maps, climate, and human geography',
-      chapters: 7,
-      estimatedTime: '25 hours',
+      name: 'English',
+      description: 'Reading, writing, grammar, and literature',
+      chapters: 8,
+      estimatedTime: '30 hours',
       difficulty: 'Intermediate',
-      icon: subjectIcons.Geography,
+      icon: subjectIcons.English,
     },
     {
-      name: 'History',
-      description: 'Ethiopian and world history, civilizations',
-      chapters: 9,
-      estimatedTime: '32 hours',
+      name: 'Amharic',
+      description: 'Ethiopian national language, literature, and communication',
+      chapters: 8,
+      estimatedTime: '30 hours',
       difficulty: 'Intermediate',
-      icon: subjectIcons.History,
+      icon: subjectIcons.Amharic,
     },
     {
-      name: 'Civic Education',
-      description: 'Democracy, rights, responsibilities, and governance',
+      name: 'Art',
+      description: 'Visual arts, drawing, painting, and creative expression',
       chapters: 6,
+      estimatedTime: '25 hours',
+      difficulty: 'Beginner',
+      icon: subjectIcons.Art,
+    },
+    {
+      name: 'Music',
+      description: 'Musical theory, instruments, and performance',
+      chapters: 5,
       estimatedTime: '20 hours',
       difficulty: 'Beginner',
-      icon: subjectIcons['Civic Education'],
+      icon: subjectIcons.Music,
     },
     {
-      name: 'Social Science',
-      description: 'Sociology, psychology, anthropology, and social studies',
-      chapters: 8,
-      estimatedTime: '35 hours',
+      name: 'Physical Education',
+      description: 'Sports, fitness, health, and physical activities',
+      chapters: 4,
+      estimatedTime: '30 hours',
+      difficulty: 'Beginner',
+      icon: subjectIcons['Physical Education'],
+    },
+    {
+      name: 'Economics',
+      description: 'Basic economic principles, markets, and financial literacy',
+      chapters: 7,
+      estimatedTime: '28 hours',
       difficulty: 'Intermediate',
-      icon: subjectIcons['Social Science'],
+      icon: subjectIcons.Economics,
     },
   ];
 
@@ -80,10 +97,10 @@ const SocialSciencePage = () => {
 
         <div className="text-center mb-12">
           <h1 className="text-5xl font-bold text-white mb-4">
-            Social Sciences - Grade {grade}
+            Common Courses - Grade {grade}
           </h1>
           <p className="text-xl text-blue-200">
-            Understand society, culture, and human behavior through various social science disciplines
+            Essential subjects including languages, arts, and life skills
           </p>
         </div>
 
@@ -148,4 +165,4 @@ const SocialSciencePage = () => {
   );
 };
 
-export default SocialSciencePage;
+export default CommonCoursesPage;
