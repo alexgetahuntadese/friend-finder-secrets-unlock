@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import GradeSelection from "./pages/GradeSelection";
 import SubjectsPage from "./pages/SubjectsPage";
+import NaturalSciencePage from "./pages/NaturalSciencePage";
+import SocialSciencePage from "./pages/SocialSciencePage";
 import ChaptersPage from "./pages/ChaptersPage";
 import QuizPage from "./pages/QuizPage";
 import NotFound from "./pages/NotFound";
@@ -16,7 +18,9 @@ const App = () => (
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/grades" element={<GradeSelection />} />
-        <Route path="/grade/:grade/subjects" element={<SubjectsPage />} />
+            <Route path="/grade/:grade/subjects" element={<SubjectsPage />} />
+            <Route path="/grade/:grade/natural-science" element={<NaturalSciencePage />} />
+            <Route path="/grade/:grade/social-science" element={<SocialSciencePage />} />
         <Route path="/grade/:grade/subject/:subject/chapters" element={<ChaptersPage />} />
         <Route path="/grade/:grade/subject/:subject/chapter/:chapterId/difficulty/:difficulty/quiz" element={<QuizPage />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
