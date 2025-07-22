@@ -82,7 +82,7 @@ const SocialSciencePage = () => {
             onClick={() => navigate(`/grade/${grade}/subjects`)}
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Subjects
+            Back to Subject Areas
           </Button>
         </div>
 
