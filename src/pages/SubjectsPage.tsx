@@ -39,6 +39,7 @@ const SubjectsPage = () => {
     'Economics': Briefcase,
     'General Science': Atom,
     'Agriculture': Wheat,
+    'Social Science': Users,
   };
 
   const subjects = [
@@ -113,6 +114,14 @@ const SubjectsPage = () => {
       estimatedTime: '40 hours',
       difficulty: 'Intermediate',
       icon: subjectIcons.Agriculture,
+    },
+    {
+      name: 'Social Science',
+      description: 'Sociology, psychology, anthropology, and social studies',
+      chapters: 8,
+      estimatedTime: '35 hours',
+      difficulty: 'Intermediate',
+      icon: subjectIcons['Social Science'],
     },
   ];
 
