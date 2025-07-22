@@ -42,87 +42,102 @@ const SubjectsPage = () => {
     'Social Science': Users,
   };
 
-  const subjects = [
+  const subjectSections = [
     {
-      name: 'Mathematics',
-      description: 'Numbers, algebra, geometry, and problem solving',
-      chapters: 12,
-      estimatedTime: '45 hours',
-      difficulty: 'Advanced',
-      icon: subjectIcons.Mathematics,
+      title: 'Natural Sciences',
+      subjects: [
+        {
+          name: 'Mathematics',
+          description: 'Numbers, algebra, geometry, and problem solving',
+          chapters: 12,
+          estimatedTime: '45 hours',
+          difficulty: 'Advanced',
+          icon: subjectIcons.Mathematics,
+        },
+        {
+          name: 'Physics',
+          description: 'Motion, forces, energy, and natural phenomena',
+          chapters: 5,
+          estimatedTime: '40 hours',
+          difficulty: 'Advanced',
+          icon: subjectIcons.Physics,
+        },
+        {
+          name: 'Chemistry',
+          description: 'Atoms, molecules, reactions, and materials',
+          chapters: 9,
+          estimatedTime: '35 hours',
+          difficulty: 'Advanced',
+          icon: subjectIcons.Chemistry,
+        },
+        {
+          name: 'Biology',
+          description: 'Living organisms, ecosystems, and life processes',
+          chapters: 11,
+          estimatedTime: '38 hours',
+          difficulty: 'Intermediate',
+          icon: subjectIcons.Biology,
+        },
+        {
+          name: 'Agriculture',
+          description: 'Crop production, livestock, soil science, and sustainable farming',
+          chapters: 6,
+          estimatedTime: '40 hours',
+          difficulty: 'Intermediate',
+          icon: subjectIcons.Agriculture,
+        },
+      ]
     },
     {
-      name: 'Physics',
-      description: 'Motion, forces, energy, and natural phenomena',
-      chapters: 5,
-      estimatedTime: '40 hours',
-      difficulty: 'Advanced',
-      icon: subjectIcons.Physics,
+      title: 'Social Sciences',
+      subjects: [
+        {
+          name: 'Geography',
+          description: 'Earth science, maps, climate, and human geography',
+          chapters: 7,
+          estimatedTime: '25 hours',
+          difficulty: 'Intermediate',
+          icon: subjectIcons.Geography,
+        },
+        {
+          name: 'History',
+          description: 'Ethiopian and world history, civilizations',
+          chapters: 9,
+          estimatedTime: '32 hours',
+          difficulty: 'Intermediate',
+          icon: subjectIcons.History,
+        },
+        {
+          name: 'Civic Education',
+          description: 'Democracy, rights, responsibilities, and governance',
+          chapters: 6,
+          estimatedTime: '20 hours',
+          difficulty: 'Beginner',
+          icon: subjectIcons['Civic Education'],
+        },
+        {
+          name: 'Social Science',
+          description: 'Sociology, psychology, anthropology, and social studies',
+          chapters: 8,
+          estimatedTime: '35 hours',
+          difficulty: 'Intermediate',
+          icon: subjectIcons['Social Science'],
+        },
+      ]
     },
     {
-      name: 'Chemistry',
-      description: 'Atoms, molecules, reactions, and materials',
-      chapters: 9,
-      estimatedTime: '35 hours',
-      difficulty: 'Advanced',
-      icon: subjectIcons.Chemistry,
-    },
-    {
-      name: 'Biology',
-      description: 'Living organisms, ecosystems, and life processes',
-      chapters: 11,
-      estimatedTime: '38 hours',
-      difficulty: 'Intermediate',
-      icon: subjectIcons.Biology,
-    },
-    {
-      name: 'English',
-      description: 'Reading, writing, grammar, and literature',
-      chapters: 8,
-      estimatedTime: '30 hours',
-      difficulty: 'Intermediate',
-      icon: subjectIcons.English,
-    },
-    {
-      name: 'Geography',
-      description: 'Earth science, maps, climate, and human geography',
-      chapters: 7,
-      estimatedTime: '25 hours',
-      difficulty: 'Intermediate',
-      icon: subjectIcons.Geography,
-    },
-    {
-      name: 'History',
-      description: 'Ethiopian and world history, civilizations',
-      chapters: 9,
-      estimatedTime: '32 hours',
-      difficulty: 'Intermediate',
-      icon: subjectIcons.History,
-    },
-    {
-      name: 'Civic Education',
-      description: 'Democracy, rights, responsibilities, and governance',
-      chapters: 6,
-      estimatedTime: '20 hours',
-      difficulty: 'Beginner',
-      icon: subjectIcons['Civic Education'],
-    },
-    {
-      name: 'Agriculture',
-      description: 'Crop production, livestock, soil science, and sustainable farming',
-      chapters: 6,
-      estimatedTime: '40 hours',
-      difficulty: 'Intermediate',
-      icon: subjectIcons.Agriculture,
-    },
-    {
-      name: 'Social Science',
-      description: 'Sociology, psychology, anthropology, and social studies',
-      chapters: 8,
-      estimatedTime: '35 hours',
-      difficulty: 'Intermediate',
-      icon: subjectIcons['Social Science'],
-    },
+      title: 'Languages & Arts',
+      subjects: [
+        {
+          name: 'English',
+          description: 'Reading, writing, grammar, and literature',
+          chapters: 8,
+          estimatedTime: '30 hours',
+          difficulty: 'Intermediate',
+          icon: subjectIcons.English,
+        },
+      ]
+    }
   ];
 
   const getDifficultyColor = (difficulty: string) => {
@@ -161,61 +176,70 @@ const SubjectsPage = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {subjects.map((subject) => {
-            const IconComponent = subject.icon;
-            return (
-              <Card 
-                key={subject.name}
-                className="bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/20 transition-all duration-300 cursor-pointer group"
-                onClick={() => handleSubjectSelect(subject.name)}
-              >
-                <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-center space-x-3">
-                      <div className="p-3 rounded-lg bg-blue-500 group-hover:bg-blue-400 transition-colors">
-                        <IconComponent className="h-6 w-6 text-white" />
-                      </div>
-                      <div>
-                        <CardTitle className="text-white text-xl">
-                          {subject.name}
-                        </CardTitle>
-                        <Badge className={getDifficultyColor(subject.difficulty)}>
-                          {subject.difficulty}
-                        </Badge>
-                      </div>
-                    </div>
-                  </div>
-                  <CardDescription className="text-blue-200 mt-2">
-                    {subject.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4 text-sm text-gray-300">
-                    <div className="flex items-center">
-                      <BookOpen className="mr-2 h-4 w-4" />
-                      <span>{subject.chapters} chapters</span>
-                    </div>
-                    <div className="flex items-center">
-                      <Clock className="mr-2 h-4 w-4" />
-                      <span>{subject.estimatedTime}</span>
-                    </div>
-                  </div>
-                  
-                  <Button 
-                    className="w-full bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleSubjectSelect(subject.name);
-                    }}
-                  >
-                    Explore Chapters
-                    <Target className="ml-2 h-4 w-4" />
-                  </Button>
-                </CardContent>
-              </Card>
-            );
-          })}
+        <div className="space-y-12">
+          {subjectSections.map((section) => (
+            <div key={section.title} className="space-y-6">
+              <h2 className="text-3xl font-bold text-white mb-6 text-center">
+                {section.title}
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {section.subjects.map((subject) => {
+                  const IconComponent = subject.icon;
+                  return (
+                    <Card 
+                      key={subject.name}
+                      className="bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/20 transition-all duration-300 cursor-pointer group"
+                      onClick={() => handleSubjectSelect(subject.name)}
+                    >
+                      <CardHeader>
+                        <div className="flex items-start justify-between">
+                          <div className="flex items-center space-x-3">
+                            <div className="p-3 rounded-lg bg-blue-500 group-hover:bg-blue-400 transition-colors">
+                              <IconComponent className="h-6 w-6 text-white" />
+                            </div>
+                            <div>
+                              <CardTitle className="text-white text-xl">
+                                {subject.name}
+                              </CardTitle>
+                              <Badge className={getDifficultyColor(subject.difficulty)}>
+                                {subject.difficulty}
+                              </Badge>
+                            </div>
+                          </div>
+                        </div>
+                        <CardDescription className="text-blue-200 mt-2">
+                          {subject.description}
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent className="space-y-4">
+                        <div className="grid grid-cols-2 gap-4 text-sm text-gray-300">
+                          <div className="flex items-center">
+                            <BookOpen className="mr-2 h-4 w-4" />
+                            <span>{subject.chapters} chapters</span>
+                          </div>
+                          <div className="flex items-center">
+                            <Clock className="mr-2 h-4 w-4" />
+                            <span>{subject.estimatedTime}</span>
+                          </div>
+                        </div>
+                        
+                        <Button 
+                          className="w-full bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleSubjectSelect(subject.name);
+                          }}
+                        >
+                          Explore Chapters
+                          <Target className="ml-2 h-4 w-4" />
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
