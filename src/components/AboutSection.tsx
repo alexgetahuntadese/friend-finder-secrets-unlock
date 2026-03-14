@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Wifi, Car, Coffee, Shield, Clock, Utensils, Dumbbell, Sparkles, Building2, ParkingSquare } from "lucide-react";
+import CountUp from "./CountUp";
 
 const amenities = [
   { icon: Wifi, label: "Free Wi-Fi" },
@@ -14,6 +15,15 @@ const amenities = [
   { icon: Building2, label: "Meeting Rooms" },
   { icon: ParkingSquare, label: "Valet Parking" },
 ];
+
+const stats = [
+  { value: 79, suffix: "", label: "Rooms & Suites" },
+  { value: 4, suffix: "★", label: "Star Rating" },
+  { value: 3, suffix: ".5 km", label: "From Airport" },
+  { value: 24, suffix: "/7", label: "Front Desk" },
+];
+
+const marqueeItems = [...amenities, ...amenities];
 
 const AboutSection = () => {
   const ref = useRef<HTMLElement>(null);
@@ -41,7 +51,7 @@ const AboutSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center mb-20"
+          className="text-center mb-16"
         >
           <span className="inline-block font-mono text-gold text-xs tracking-[0.3em] uppercase mb-4 px-4 py-1.5 rounded-full border border-gold/20 bg-gold/5">
             Welcome to Washington Hotel
@@ -58,32 +68,51 @@ const AboutSection = () => {
           </p>
         </motion.div>
 
+        {/* Animated stats counter row */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4"
+          transition={{ duration: 0.6 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16"
         >
-          {amenities.map((amenity, i) => (
-            <motion.div
-              key={amenity.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.05 }}
-              whileHover={{ y: -8, scale: 1.04 }}
-              className="group flex flex-col items-center gap-3 p-6 rounded-2xl glass border-glow hover:glow-gold transition-all duration-500 cursor-default"
+          {stats.map((stat) => (
+            <div
+              key={stat.label}
+              className="text-center glass p-6 rounded-2xl border-glow"
             >
-              <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 transition-colors duration-300 group-hover:scale-110 transform">
-                <amenity.icon className="w-5 h-5 text-gold" />
+              <div className="font-display text-3xl md:text-4xl font-bold text-foreground">
+                <CountUp end={stat.value} suffix={stat.suffix} />
               </div>
-              <span className="font-body text-xs font-medium text-foreground text-center">
-                {amenity.label}
-              </span>
-            </motion.div>
+              <p className="font-mono text-xs tracking-wider text-muted-foreground uppercase mt-2">{stat.label}</p>
+            </div>
           ))}
         </motion.div>
+
+        {/* Marquee amenities ticker */}
+        <div className="relative overflow-hidden py-6 -mx-4">
+          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-background to-transparent z-10" />
+          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-background to-transparent z-10" />
+          <motion.div
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+            className="flex gap-4 w-max"
+          >
+            {marqueeItems.map((amenity, i) => (
+              <div
+                key={`${amenity.label}-${i}`}
+                className="flex items-center gap-3 px-6 py-3 rounded-full glass border-glow whitespace-nowrap"
+              >
+                <div className="w-8 h-8 rounded-lg bg-gold/10 flex items-center justify-center flex-shrink-0">
+                  <amenity.icon className="w-4 h-4 text-gold" />
+                </div>
+                <span className="font-body text-sm font-medium text-foreground">
+                  {amenity.label}
+                </span>
+              </div>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   );
