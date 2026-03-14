@@ -59,7 +59,7 @@ const HeroSection = () => {
       <div className="absolute bottom-8 right-8 w-24 h-24 border-b border-r border-gold/20 hidden md:block rounded-br-lg" />
 
       {/* Content */}
-      <motion.div style={{ opacity }} className="relative z-10 text-center px-4 max-w-4xl mx-auto" style={{ perspective: "1000px" }}>
+      <motion.div style={{ opacity, perspective: "1000px" }} className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
